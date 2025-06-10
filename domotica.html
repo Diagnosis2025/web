@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Soluciones de Domótica</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .smart-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('img/casa.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .smart-banner h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .smart-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .smart-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4361ee;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .automation-filter {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #4361ee;
+            color: white;
+        }
+        
+        .compatibility-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .smart-banner {
+                padding: 70px 20px;
+            }
+            
+            .smart-banner h1 {
+                font-size: 2rem;
+            }
+        }
+      
+    </style>
+</head>
+ <link rel="icon" href="img/icono.png" type="image/png">
+<body>
+        <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    <!-- Banner de Domótica -->
+    <section class="smart-banner animate-zoom">
+        <h1>Domótica Inteligente para tu Hogar</h1>
+        <p>Convierte tu casa en un hogar inteligente con nuestras soluciones de automatización y control.</p>
+    </section>
+
+    <!-- Sección de Productos -->
+    <section class="products" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="section-title">
+            <h2>Productos de Domótica</h2>
+            <p style="text-align: center; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Controla tu hogar desde cualquier lugar con nuestros dispositivos inteligentes y conectados.
+            </p>
+        </div>
+        
+        <!-- Filtros -->
+        <div class="automation-filter">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="seguridad">Seguridad</button>
+            <button class="filter-btn" data-filter="iluminacion">Iluminación</button>
+            <button class="filter-btn" data-filter="control">Control</button>
+        </div>
+        
+        <div class="product-grid">
+            <!-- Producto 1: Cerraduras Electrónicas -->
+            <div class="product-card" data-category="seguridad">
+                <div class="product-image">
+                    <img src="img/cerraduras.JPG" alt="Cerraduras Electrónicas">
+                </div>
+                <div class="product-info">
+                    <h3>Cerraduras Electrónicas Inteligentes</h3>
+                    <p>Sistema de acceso seguro con huella digital, contraseña y control remoto.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Compatible con Alexa y Google Home</p>
+                        <p><i class="fas fa-check-circle"></i> Apertura con huella, PIN o app</p>
+                        <p><i class="fas fa-check-circle"></i> Registro de accesos en tiempo real</p>
+                        <div style="margin-top: 10px;">
+                            <span class="compatibility-badge">WiFi</span>
+                            <span class="compatibility-badge">Zigbee</span>
+                            <span class="compatibility-badge">Bluetooth</span>
+                        </div>
+                    </div>
+                    <div class="product-price">$249.99</div>
+                   
+                </div>
+            </div>
+            
+            <!-- Producto 2: Interruptores WiFi -->
+            <div class="product-card" data-category="iluminacion">
+                <div class="product-image">
+                    <img src="img/interruptores.JPG" alt="Interruptores WiFi">
+                </div>
+                <div class="product-info">
+                    <h3>Interruptores WiFi Inteligentes</h3>
+                    <p>Controla la iluminación de tu hogar desde cualquier lugar con tu smartphone.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Compatible con asistente de voz</p>
+                        <p><i class="fas fa-check-circle"></i> Programación de horarios</p>
+                        <p><i class="fas fa-check-circle"></i> Monitorización de consumo</p>
+                        <div style="margin-top: 10px;">
+                            <span class="compatibility-badge">WiFi</span>
+                            <span class="compatibility-badge">Tuya</span>
+                            <span class="compatibility-badge">Smart Life</span>
+                        </div>
+                    </div>
+                    <div class="product-price">$39.99</div>
+                   
+                </div>
+            </div>
+            
+            <!-- Producto 3: Sensores de Humo -->
+            <div class="product-card" data-category="seguridad">
+                <div class="product-image">
+                    <img src="img/humo.JPG" alt="Sensores de Humo">
+                </div>
+                <div class="product-info">
+                    <h3>Detectores de Humo Inteligentes</h3>
+                    <p>Alerta temprana de incendios con notificaciones en tu móvil.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Conexión WiFi integrada</p>
+                        <p><i class="fas fa-check-circle"></i> Alarma sonora de 85dB</p>
+                        <p><i class="fas fa-check-circle"></i> Batería de larga duración (10 años)</p>
+                        <div style="margin-top: 10px;">
+                            <span class="compatibility-badge">WiFi</span>
+                            <span class="compatibility-badge">HomeKit</span>
+                        </div>
+                    </div>
+                    <div class="product-price">$59.99</div>
+                  
+                </div>
+            </div>
+            
+            <!-- Producto 4: Sistemas de Alarmas -->
+            <div class="product-card" data-category="seguridad">
+                <div class="product-image">
+                    <img src="img/alarmas.JPG" alt="Sistema de Alarmas">
+                </div>
+                <div class="product-info">
+                    <h3>Sistema de Alarma Inteligente</h3>
+                    <p>Protección completa para tu hogar con sensores y monitoreo 24/7.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Kit inicial con 5 sensores</p>
+                        <p><i class="fas fa-check-circle"></i> Notificaciones instantáneas</p>
+                        <p><i class="fas fa-check-circle"></i> Activación por geolocalización</p>
+                        <div style="margin-top: 10px;">
+                            <span class="compatibility-badge">WiFi</span>
+                            <span class="compatibility-badge">4G</span>
+                            <span class="compatibility-badge">Z-Wave</span>
+                        </div>
+                    </div>
+                    <div class="product-price">$199.99</div>
+                 
+                </div>
+            </div>
+            
+            <!-- Producto 5: Hub de Control -->
+            <div class="product-card" data-category="control">
+                <div class="product-image">
+                    <img src="img/hub.JPG" alt="Hub de Control">
+                </div>
+                <div class="product-info">
+                    <h3>Hub de Control Central</h3>
+                    <p>Cerebro de tu hogar inteligente que integra todos tus dispositivos.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Compatible con 100+ dispositivos</p>
+                        <p><i class="fas fa-check-circle"></i> Automatizaciones avanzadas</p>
+                        <p><i class="fas fa-check-circle"></i> Control por voz y app</p>
+                        <div style="margin-top: 10px;">
+                            <span class="compatibility-badge">Zigbee</span>
+                            <span class="compatibility-badge">Z-Wave</span>
+                            <span class="compatibility-badge">WiFi</span>
+                            <span class="compatibility-badge">Bluetooth</span>
+                        </div>
+                    </div>
+                    <div class="product-price">$129.99</div>
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="info-section animate-zoom" style="background-color: #f8f9fa; padding: 60px 20px;">
+        <div class="info-container">
+            <div class="info-text">
+                <h2>Transforma tu hogar en inteligente</h2>
+                <p>Nuestros productos de domótica ofrecen comodidad, seguridad y ahorro energético:</p>
+                
+                <div class="smart-features">
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Control Remoto</h3>
+                        <p>Gestiona todos los dispositivos de tu hogar desde tu smartphone, estés donde estés.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Automatización</h3>
+                        <p>Programa rutinas inteligentes que se activen según horarios o eventos específicos.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Seguridad</h3>
+                        <p>Protege tu hogar con sistemas de vigilancia y alarmas conectadas.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Ahorro Energético</h3>
+                        <p>Optimiza el consumo de electricidad con sistemas inteligentes de gestión.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Asistentes -->
+    <section class="info-section" style="padding: 60px 20px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="margin-bottom: 30px;">Compatible con los principales asistentes</h2>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
+                <div style="text-align: center;">
+                    <i class="fab fa-amazon" style="font-size: 3rem; color: #FF9900;"></i>
+                    <p>Alexa</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fab fa-google" style="font-size: 3rem; color: #4285F4;"></i>
+                    <p>Google Assistant</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fab fa-apple" style="font-size: 3rem; color: #000000;"></i>
+                    <p>Apple HomeKit</p>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fab fa-android" style="font-size: 3rem; color: #3DDC84;"></i>
+                    <p>SmartThings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->  
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+
+
+</body>
+</html>

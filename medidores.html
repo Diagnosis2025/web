@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis | Medidores Inteligentes</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .appbar {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 201, 240, 0.5);
+        }
+
+        /* Meter Grid */
+        .meter-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .meter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .meter-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .meter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .meter-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .meter-card:hover .meter-image img {
+            transform: scale(1.1);
+        }
+
+        .meter-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .meter-info {
+            padding: 1.5rem;
+        }
+
+        .meter-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .meter-info p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .meter-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .meter-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .meter-features i {
+            color: var(--accent-color);
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .meter-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Network Section */
+        .network-section {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .network-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .network-container h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .network-container p {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: #ddd;
+        }
+
+        .network-image {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .network-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+
+            .meter-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-container h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-container p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+      
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: var(--transition);
+                padding-top: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .server-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+
+            .datacenter-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .server-hero {
+                height: 60vh;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+    </style>
+</head>
+<link rel="icon" href="img/icono.png" type="image/png">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Tu CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<body>
+      <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Medición Inteligente para Servicios Públicos</h1>
+            <p>En Diagnosis ofrecemos soluciones integrales para los servicios de luz, agua y gas. Todos nuestros
+                equipos forman una red inteligente que te permite obtener datos en tiempo real y tomar decisiones
+                informadas.</p>
+            <a href="#medidores" class="cta-button">Ver Medidores</a>
+        </div>
+    </section>
+
+    <!-- Meter Grid Section -->
+    <section class="meter-section animate-zoom" id="medidores">
+        <div class="section-title">
+            <h2>Nuestros Medidores Inteligentes</h2>
+            <p>Tecnología de punta para una gestión eficiente de los recursos</p>
+        </div>
+
+        <div class="meter-grid">
+            <!-- Medidor de Luz -->
+            <div class="meter-card">
+                <div class="meter-image">
+                    <img src="img/medidor_luz.JPG" alt="Medidor de Luz Inteligente">
+                    <span class="meter-badge">PLC/LoRa/4G</span>
+                </div>
+                <div class="meter-info">
+                    <h3>Medidor de Luz Inteligente</h3>
+                    <p>Sistema de medición eléctrica con comunicación bidireccional y análisis de calidad de energía.
+                    </p>
+
+                    <ul class="meter-features">
+                        <li><i class="fas fa-check"></i> Monitoreo en tiempo real</li>
+                        <li><i class="fas fa-check"></i> Detección de fraudes</li>
+                        <li><i class="fas fa-check"></i> Análisis de consumo</li>
+                        <li><i class="fas fa-check"></i> Alarmas programables</li>
+                    </ul>
+
+
+                    <a href="medidor_luz.html" class="cta-button"
+                        style="display: inline-block; width: 100%; text-align: center; padding: 10px;">Más
+                        información</a>
+                </div>
+            </div>
+
+            <!-- Medidor de Agua -->
+            <div class="meter-card">
+                <div class="meter-image">
+                    <img src="img/medidor_agua.JPG" alt="Medidor de Agua Inteligente">
+                    <span class="meter-badge">LoRa</span>
+                </div>
+                <div class="meter-info">
+                    <h3>Medidor de Agua Inteligente</h3>
+                    <p>Solución ultrasónica para medición precisa con detección de fugas y consumo anómalo.</p>
+
+                    <ul class="meter-features">
+                        <li><i class="fas fa-check"></i> Tecnología sin partes móviles</li>
+                        <li><i class="fas fa-check"></i> Bajo mantenimiento</li>
+                        <li><i class="fas fa-check"></i> Detección de fugas</li>
+                        <li><i class="fas fa-check"></i> Resistente a manipulaciones</li>
+                    </ul>
+
+
+                    <a href="medidor_agua.html" class="cta-button"
+                        style="display: inline-block; width: 100%; text-align: center; padding: 10px;">Más
+                        información</a>
+                </div>
+            </div>
+
+            <!-- Medidor de Gas -->
+            <div class="meter-card">
+                <div class="meter-image">
+                    <img src="img/medidor_gas.JPG" alt="Medidor de Gas Inteligente">
+                    <span class="meter-badge">LoRa/4G</span>
+                </div>
+                <div class="meter-info">
+                    <h3>Medidor de Gas Inteligente</h3>
+                    <p>Sistema de medición de flujo con comunicación remota y alertas de seguridad integradas.</p>
+
+                    <ul class="meter-features">
+                        <li><i class="fas fa-check"></i> Medición de flujo ultrasónica</li>
+                        <li><i class="fas fa-check"></i> Detección de fugas</li>
+                        <li><i class="fas fa-check"></i> Corte automático en emergencias</li>
+                        <li><i class="fas fa-check"></i> Bajo consumo de energía</li>
+                    </ul>
+
+
+                    <a href="medidor_gas.html" class="cta-button"
+                        style="display: inline-block; width: 100%; text-align: center; padding: 10px;">Más
+                        información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Network Section -->
+    <section class="network-section animate-up">
+        <div class="network-container">
+            <h2>Red Inteligente Integrada</h2>
+            <p>Nuestros medidores forman parte de una red unificada que permite la recolección centralizada de datos y
+                el monitoreo en tiempo real de todos tus servicios.</p>
+
+            <div class="network-image">
+                <img src="img/solucionCompleta.jpg" alt="Red de Medidores Inteligentes">
+            </div>
+            <p>Conectá y visualizá todos tus dispositivos con un solo click.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>    
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+        <link rel="stylesheet" href="styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis</title>
+
+    <!-- Ícono en la pestaña del navegador (favicon) -->
+    <link rel="icon" href="img/icono.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }      
+       /* Hero Section */
+.hero {
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 1rem 1rem;
+    margin-bottom: 2rem;
+    color: white;
+
+    background-image: url('img/medidores_wall.JPG'); /* ← TU IMAGEN */
+    background-size: cover;                  /* que cubra todo */
+    background-position: center;             /* centrada */
+    background-repeat: no-repeat;            /* que no se repita */
+    
+    /* Podés agregar un overlay si el texto no se ve bien */
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* oscurece un poco la imagen */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+.modem-advantages {
+  padding: 4rem 1rem;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #222;
+}
+
+.subtitulo-modem {
+  font-size: 2rem; /* Tamaño normal */
+}
+
+@media (max-width: 768px) {
+  .subtitulo-modem {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitulo-modem {
+    font-size: 0.8rem;
+  }
+}
+
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.advantage-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-5px);
+}
+
+.advantage-card i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.advantage-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.advantage-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+        /* Info Sections */
+        .info-section {
+            padding: 3rem 1rem;
+            background-color: white;
+        }
+
+        .info-section.dark-section {
+            background-color: #f5f7fa;
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.0rem);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .info-text {
+            padding: 1rem;
+        }
+
+        .info-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .info-text p {
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .features-list i {
+            color: var(--accent-color);
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .info-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111;
+            color: #fff;
+            padding: 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            grid-column: 1 / -1;
+        }
+
+    
+                :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Sección Demitec */
+        .demitec-section {
+            padding: 4rem 1rem;
+            background-color: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .demitec-logo {
+            width: 180px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Grid de beneficios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .benefit-description {
+            color: #555;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+             .section-title h2 {
+            font-size: clamp(1.0rem, 4vw, 1.2rem);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        }
+
+        @media (max-width: 480px) {
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+            
+            .demitec-logo {
+                width: 150px;
+            }
+               .section-title h2 {
+            font-size: clamp(1.0rem, 4vw, 1.2rem);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+      <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+  <div class="hero-content">
+    <h1>Comunicación 4G LTE</h1>
+    <p>Módem para telelectura de medidores eléctricos</p>
+  </div>
+</section>
+
+    <!-- Sección 1 -->
+    <section class="info-section animate-zoom" >
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Módem para Zonas rurales y urbanas</h2>                
+                <p class="subtitulo-modem">Cobertura de red celular 4G LTE / 3G / 2G compatible con todas las marcas y modelos de medidores</p>
+
+            </div>
+            
+            <div class="info-content" >
+                <div class="info-text">
+                    <h3>Solución integral de comunicación</h3>
+                    <p>El equipo Diagnosis de comunicación por la Red Celular 4G de rango extendido es una interfaz inteligente de bajo costo con puerto óptico integrado (IEC62056-21/IrDa) que se instala de forma muy sencilla (adhiriéndola con su cinta doble faz 3M) sobre el puerto óptico del Medidor.</p>
+                    
+                    <p>El módem genera una conexión a la nube del Sistema AMI utilizando la red Celular 4G LTE-M o NBIOT. Esta conexión permite la comunicación eficiente y en tiempo real entre los medidores y el sistema central, asegurando una gestión precisa y continua de los datos de medición.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Reducido tamaño</li>
+                        <li><i class="fas fa-check-circle"></i> Conector SMA para Antena externa, ideal para zonas rurales</li>
+                        <li><i class="fas fa-check-circle"></i> Comunicación 4G con Bandas LTE-M en tiempo real sin latencia</li>
+                        <li><i class="fas fa-check-circle"></i> Todos los puertos de lectura</li>
+                    </ul>
+                </div>
+                
+                <div class="info-image">
+                    <img src="img/modem_diagnosis.JPG" alt="DEMI-LTEM en zona rural">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2 (dark) -->
+    <section class="info-section dark-section animate-zoom">
+        <div class="section-container">
+            <div class="info-content">
+                <div class="info-image">
+                    <img src="img/modem_caracteristicas.jpg" alt="Instalación DEMI-LTEM">
+                </div>
+                
+                <div class="info-text">
+                    <h3>Características técnicas</h3>
+                    <p>Este dispositivo conecta automáticamente a la nube del Sistema AMI, optimizando la gestión de datos y proporcionando una solución eficiente y fácil de usar.</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Comunicación 4G con Bandas de mayor alcance</li>
+                        <li><i class="fas fa-check-circle"></i> Equipo All in One (fuente certificada de doble aislación e Interfaz óptica en un mismo gabinete)</li>
+                        <li><i class="fas fa-check-circle"></i> Bajo consumo de energía</li>
+                        <li><i class="fas fa-check-circle"></i> Compatible con todas las redes celulares de Argentina</li>
+                        <li><i class="fas fa-check-circle"></i> Puertos RS-232, RS486, IrDA, óptico</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3 -->
+    <section class="info-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Beneficios para su Cooperativa o Distribuidora</h2>
+            </div>
+            
+            <div class="info-content">
+                <div class="info-text">
+                    <p>Nuestro módem de telelectura le permite a su Cooperativa o Distribuidora:</p>
+                    
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Reutilizar el parque de medidores ya instalado</li>
+                        <li><i class="fas fa-check-circle"></i> Versatilidad en la elección de nuevos Medidores, ya que no queda atado a una marca y modelo</li>
+                        <li><i class="fas fa-check-circle"></i> Utilizar canal de comunicación por Red Celular 4G NBIOT con excelente cobertura en áreas rurales</li>
+                        <li><i class="fas fa-check-circle"></i> Disponer de una interfaz abierta que permite utilizar nuestro Sistema AMI o desarrollar el propio</li>
+                    </ul>
+                    
+                    <p>Todas las Empresas de Argentina (Claro, Movistar y Personal) tienen implementada esta tecnología en su red, garantizando cobertura en todo el territorio nacional.</p>
+                </div>
+                
+                <div class="info-image">
+                    <img src="img/modem_beneficios.jpg" alt="Cobertura rural">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4 (dark) -->
+    <section class="info-section dark-section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>¿Qué es LTE-M y NBIOT?</h2>
+            </div>
+            
+            <div class="info-content">
+                <div class="info-image">
+                    <img src="img/nbiot.jpg" alt="Tecnología LTE-M/NBIOT">
+                </div>
+                
+                <div class="info-text">
+                    <p>Las redes LTE-M y NB-IoT forman parte de las redes del tipo LPWA, siglas inglesas de Bajo Consumo Área Extensa, de baja potencia y ancho de banda estrecho, que opera en amplias zonas.</p>
+                    
+                    <p>El objetivo de esta tecnología móvil es atender las diferentes necesidades de conectividad ya que está diseñada específicamente para la comunicación de dispositivos de internet de las cosas y da soporte a aquellos equipos que realizan con bajos volúmenes de transferencia de datos durante largos periodos de tiempo, especialmente en lugares con difícil acceso (como zonas Rurales).</p>
+                    
+                    <p>Esta tecnología fue desarrollada por 3GPP, para dar soluciones de conectividad al crecimiento de IoT, en lo que se denomina extended Machine Type Communications (eMTC), y ofrece una cobertura de red estable con alta densidad de conexiones.</p>
+                    
+                    <p>Desde 2016 LTE-M y NB-IoT es un estándar para las comunicaciones inalámbricas que puede intercambiar pequeñas cantidades de datos de forma eficiente a múltiples dispositivos, minimiza el consumo de energía y aumenta el rango de cobertura en ubicaciones que no cuentan con tecnología móviles convencionales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ventajas Módems Telelectura -->
+<section class="modem-advantages animate-zoom">
+  <div class="container">
+    <h2 class="section-title">¿Por qué comprar los módems para telelectura de medidores?</h2>
+    <div class="advantages-grid">
+      
+      <div class="advantage-card">
+        <i class="fa-solid fa-plug-circle-check"></i>
+        <h3>Modernice sin reemplazar</h3>
+        <p>Nuestros módems convierten cualquier medidor de energía —incluso los más antiguos— en un dispositivo inteligente, reutilizando infraestructura existente y reduciendo costos.</p>
+      </div>
+
+      <div class="advantage-card">
+        <i class="fa-solid fa-eye-slash"></i>
+        <h3>Telelectura sin intervención humana</h3>
+        <p>La lectura es remota, automática y segura, sin ingresar a propiedades ni exponer personal. Ideal para zonas rurales o de difícil acceso.</p>
+      </div>
+
+      <div class="advantage-card">
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+        <h3>Sin inversión inicial</h3>
+        <p>Ofrecemos un modelo de servicio mensual sin licenciamiento ni obligación de permanencia. Ideal para comenzar rápido y escalar según demanda.</p>
+      </div>
+
+      <div class="advantage-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Control total y eficiencia</h3>
+        <p>Monitoree su red en tiempo real, detecte fraudes, integre los datos a su sistema de facturación y mejore la eficiencia operativa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Carrusel de Medidores -->
+<section class="info-section dark-section ">
+    <div class="section-container">
+        <div class="section-title">
+            <h2>Galería de Medidores</h2>
+            <p>Comunicamos e Integramos todas las Marcas y Modelos</p>
+        </div>
+
+        <!-- Swiper Container -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/carrusel1.jpg" alt="Medidor 1"></div>
+                <div class="swiper-slide"><img src="img/carrusel2.jpg" alt="Medidor 2"></div>
+                <div class="swiper-slide"><img src="img/carrusel3.JPG" alt="Medidor 3"></div>
+                <div class="swiper-slide"><img src="img/carrusel4.JPG" alt="Medidor 4"></div>
+                <div class="swiper-slide"><img src="img/carrusel5.jpg" alt="Medidor 5"></div>
+                <div class="swiper-slide"><img src="img/carrusel6.jpg" alt="Medidor 6"></div>
+                <div class="swiper-slide"><img src="img/carrusel7.jpg" alt="Medidor 7"></div>
+                <div class="swiper-slide"><img src="img/carrusel8.jpg" alt="Medidor 8"></div>
+                <div class="swiper-slide"><img src="img/carrusel9.JPG" alt="Medidor 9"></div>
+                <div class="swiper-slide"><img src="img/carrusel10.JPG" alt="Medidor 10"></div>
+                <div class="swiper-slide"><img src="img/carrusel11.JPG" alt="Medidor 11"></div>
+                <div class="swiper-slide"><img src="img/carrusel12.JPG" alt="Medidor 12"></div>
+                <div class="swiper-slide"><img src="img/carrusel13.jpg" alt="Medidor 13"></div>
+                <div class="swiper-slide"><img src="img/carrusel14.JPG" alt="Medidor 14"></div>
+            </div>
+            <!-- Pagination & Navigation -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<!-- SwiperJS CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Swiper Init Script -->
+<script>
+  const swiper = new Swiper(".mySwiper", {
+    slidesPerView: 5,  // ← CAMBIADO: Mostrar 5 por defecto
+    spaceBetween: 20,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1
+      },
+      768: {
+        slidesPerView: 2
+      },
+      1024: {
+        slidesPerView: 5  // ← CAMBIADO: Mostrar 5 desde pantallas grandes
+      }
+    }
+  });
+</script>
+
+<!-- Extra styling -->
+<style>
+.swiper {
+    width: 80%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+.swiper-slide {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  .swiper-slide img {
+    width: 90%;
+    height: 150px;            /* Ajustá esto según tu gusto */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+ .device-image {
+    width: 150px; /* o el tamaño que quieras */
+    height: 150px;
+    object-fit: cover; /* recorta para que todas se vean uniformes */
+    border-radius: 10px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+ }
+
+ @media (max-width: 768px) {
+  .swiper-slide img {
+    height: 100px; /* o menos, ajustalo a gusto */
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .swiper {
+    width: 95%;
+  }
+}
+</style>
+
+
+ <section class="demitec-section">
+        <div class="section-container">
+            <div class="section-header">
+                <img src="img/logo2.png" alt="Demitec Logo" class="demitec-logo">
+                <h2>¿Por qué elegirnos?</h2>
+                <p>Somos una empresa de Ingeniería Argentina con más de 20 años de experiencia en el desarrollo de soluciones en el mercado de la electrónica y software.</p>
+                <p>Nuestros equipos están certificados y junto a nuestro Software AMI hacen de la mejor alternativa para realizar telelectura de medidores de Energía.</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <!-- Beneficio 1 -->
+                <div class="benefit-card">
+                    <img src="img/icons/precio-bajo.JPG" alt="Precio bajo" class="benefit-icon">
+                    <h3 class="benefit-title">Precio más bajo del mercado</h3>
+                    <p class="benefit-description">Nuestro módem es económico, costando menos del 50% de implementar PLC. Ofrece conectividad sobre red WiFi de la distribuidora o del usuario final, eliminando el costo del tráfico mensual.</p>
+                </div>
+                
+                <!-- Beneficio 2 -->
+                <div class="benefit-card">
+                    <img src="img/icons/inversion.JPG" alt="Sin inversión" class="benefit-icon">
+                    <h3 class="benefit-title">Sistema AMI sin inversión inicial</h3>
+                    <p class="benefit-description">Utilice nuestros sistemas sin necesidad de inversión inicial, mediante un servicio mensual sin licenciamiento ni obligación de permanencia.</p>
+                </div>
+                
+                <!-- Beneficio 3 -->
+                <div class="benefit-card">
+                    <img src="img/icons/desarrollo.JPG" alt="Desarrollo nacional" class="benefit-icon">
+                    <h3 class="benefit-title">Desarrollo nacional a su medida</h3>
+                    <p class="benefit-description">Desarrollado por ingenieros nacionales con más de 20 años de experiencia en medidores de energía, podemos agregar funciones personalizadas a sus necesidades.</p>
+                </div>
+                
+                <!-- Beneficio 4 -->
+                <div class="benefit-card">
+                    <img src="img/icons/wifi.JPG" alt="Zona WiFi" class="benefit-icon">
+                    <h3 class="benefit-title">Aproveche la zona WiFi disponible</h3>
+                    <p class="benefit-description">Utilizamos las zonas WiFi proporcionadas por los módems de los usuarios, establecemos convenios con ISP locales o creamos una Red WiFi comunitaria con puntos de acceso 4G.</p>
+                </div>
+                
+                <!-- Beneficio 5 -->
+                <div class="benefit-card">
+                    <img src="img/icons/compatible.JPG" alt="Compatible" class="benefit-icon">
+                    <h3 class="benefit-title">Compatible con todos los medidores</h3>
+                    <p class="benefit-description">Nuestra interfaz convierte todos los medidores de energía en inteligentes y comunicables a bajo costo, ya sea por puerto óptico, RS232 o RS485.</p>
+                </div>
+                
+                <!-- Beneficio 6 -->
+                <div class="benefit-card">
+                    <img src="img/icons/app.JPG" alt="APP móvil" class="benefit-icon">
+                    <h3 class="benefit-title">APP para sus usuarios</h3>
+                    <p class="benefit-description">Ofrezca a sus usuarios una aplicación móvil que les permita controlar su consumo en tiempo real, ver estadísticas diarias y horarias, y recibir novedades.</p>
+                </div>
+                
+                <!-- Beneficio 7 -->
+                <div class="benefit-card">
+                    <img src="img/icons/integracion.JPG" alt="Integración" class="benefit-icon">
+                    <h3 class="benefit-title">Integrable a su sistema de facturación</h3>
+                    <p class="benefit-description">Todos los datos recaudados por nuestro sistema AMI son de su propiedad y pueden consultarse mediante vistas SQL o API, para compatibilidad con su sistema de facturación.</p>
+                </div>
+                
+                <!-- Beneficio 8 -->
+                <div class="benefit-card">
+                    <img src="img/icons/control.JPG" alt="Control" class="benefit-icon">
+                    <h3 class="benefit-title">Control y mantenimiento de su red</h3>
+                    <p class="benefit-description">Con nuestro software AMI, puede visualizar en tiempo real el estado de todos los medidores de su red y optimizar los procesos de control y mantenimiento.</p>
+                </div>
+                
+                <!-- Beneficio 9 -->
+                <div class="benefit-card">
+                    <img src="img/icons/seguridad.JPG" alt="Seguridad" class="benefit-icon">
+                    <h3 class="benefit-title">Evite y prevenga el posible robo de energía</h3>
+                    <p class="benefit-description">Realice mediciones continuas para obtener la curva de consumo de energía, detectando anomalías y monitoreando transformadores para identificar diferencias de energía con los medidores conectados.</p>
+                </div>
+                
+                <!-- Beneficio 10 -->
+                <div class="benefit-card">
+                    <img src="img/icons/financiacion.JPG" alt="Financiación" class="benefit-icon">
+                    <h3 class="benefit-title">Financiamos su proyecto</h3>
+                    <p class="benefit-description">Dependiendo de la cantidad de equipos y la magnitud de su proyecto, podemos ayudar a su cooperativa a financiar la inversión en equipamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+</html>

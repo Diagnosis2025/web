@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis | Servidores y Data Center</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+       <link rel="stylesheet" href="styles.css"> 
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }   
+
+        /* Hero Section */
+        .server-hero {
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                url('img/servidoresNumeros.jpg') center/cover;
+            color: white;
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.4);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 201, 240, 0.5);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* Data Center Section */
+        .datacenter-section {
+            background-color: #f5f7fa;
+            padding: 5rem 2rem;
+        }
+
+        .datacenter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .datacenter-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .datacenter-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .datacenter-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Dashboards Section */
+        .dashboards-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dashboard-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .dashboard-card img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-container h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-container p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+   
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                transition: var(--transition);
+                padding-top: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .server-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+
+            .datacenter-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .server-hero {
+                height: 60vh;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+            /* Animación de subida */
+.animate-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efecto de zoom desde adentro hacia afuera */
+.animate-zoom {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.8s ease, transform 1.0s ease;
+}
+
+.animate-zoom.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+    </style>
+</head>
+<link rel="icon" href="img/icono.png" type="image/png">
+
+<body>
+      <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Hero Section -->
+    <section class="server-hero animate-zoom">
+        <div class="hero-content">
+            <h1>Infraestructura de Servidores Segura</h1>
+            <p>Diagnosis ofrece soluciones de alojamiento de datos en nuestros data centers de alta disponibilidad,
+                garantizando la seguridad y accesibilidad de la información de tus medidores IoT las 24 horas del día,
+                los 365 días del año.</p>
+            <a href="contacto.html" class="cta-button">Consultar Servicios</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-title">
+            <h2>Nuestros Servicios de Hosting</h2>
+            <p>Infraestructura diseñada para el manejo seguro de datos de medición en tiempo real</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Seguridad Avanzada</h3>
+                <p>Protegemos tus datos con cifrado de extremo a extremo, firewalls de última generación y sistemas de
+                    detección de intrusiones.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Almacenamiento Redundante</h3>
+                <p>Sistemas de almacenamiento con replicación en tiempo real en múltiples ubicaciones para garantizar la
+                    disponibilidad de los datos.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Alto Rendimiento</h3>
+                <p>Infraestructura escalable capaz de manejar millones de lecturas por segundo de tus dispositivos IoT.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Backup Automático</h3>
+                <p>Copias de seguridad diarias con retención configurable para proteger tu información contra cualquier
+                    eventualidad.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Analítica en Tiempo Real</h3>
+                <p>Procesamiento y visualización inmediata de los datos recolectados por tus medidores inteligentes.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h3>API de Integración</h3>
+                <p>Interfaces programables para conectar tus sistemas con nuestra plataforma de recolección de datos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Center Section -->
+    <section class="datacenter-section animate-up">
+        <div class="datacenter-container">
+            <div>
+                <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: var(--dark-color);">Nuestro Data Center</h2>
+                <p style="margin-bottom: 1.5rem;">Instalaciones de última generación ubicadas estratégicamente con
+                    redundancia de energía, conectividad y sistemas de refrigeración.</p>
+                <ul style="list-style: none; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start;">
+                        <i class="fas fa-check"
+                            style="color: var(--accent-color); margin-right: 10px; margin-top: 3px;"></i>
+                        <span>Tier III Certification</span>
+                    </li>
+                    <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start;">
+                        <i class="fas fa-check"
+                            style="color: var(--accent-color); margin-right: 10px; margin-top: 3px;"></i>
+                        <span>99.99% Uptime SLA</span>
+                    </li>
+                    <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start;">
+                        <i class="fas fa-check"
+                            style="color: var(--accent-color); margin-right: 10px; margin-top: 3px;"></i>
+                        <span>Doble alimentación eléctrica</span>
+                    </li>
+                    <li style="margin-bottom: 0.8rem; display: flex; align-items: flex-start;">
+                        <i class="fas fa-check"
+                            style="color: var(--accent-color); margin-right: 10px; margin-top: 3px;"></i>
+                        <span>Control de acceso biométrico</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="datacenter-image">
+                <img src="img/datacenter.jpg" alt="Data Center Diagnosis">
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboards Section -->
+    <section class="dashboards-section animate-zoom">
+        <div class="section-title">
+            <h2>Dashboards de Monitoreo</h2>
+            <p>Visualiza y analiza los datos de tus medidores IoT con nuestras herramientas avanzadas y personalizadas
+            </p>
+        </div>
+
+        <div class="dashboards-grid">
+            <div class="dashboard-card">
+                <img src="img/temp_history.JPG" alt="Dashboard de Consumo Eléctrico">
+            </div>
+
+            <div class="dashboard-card">
+                <img src="img/temp_history2.JPG" alt="Dashboard de Consumo de Agua">
+            </div>
+
+            <div class="dashboard-card">
+                <img src="img/temp_history3.JPG" alt="Dashboard de Consumo de Gas">
+            </div>
+
+            <div class="dashboard-card">
+                <img src="img/temp_history4.JPG" alt="Dashboard de Alertas">
+            </div>
+
+            <div class="dashboard-card">
+                <img src="img/temp_history5.png" alt="Dashboard Histórico">
+            </div>
+
+            <div class="dashboard-card">
+                <img src="img/temp_history6.png" alt="Dashboard Georeferenciado">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section animate-up" id="contacto">
+        <div class="contact-container">
+            <h2>¿Listo para alojar tus datos con nosotros?</h2>
+            <p>Contáctanos para conocer más sobre nuestros servicios de hosting para datos IoT y recibir una
+                demostración personalizada de nuestras plataformas de monitoreo.</p>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

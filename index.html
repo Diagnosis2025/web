@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis</title>
+
+    <!-- Ícono en la pestaña del navegador (favicon) -->
+    <link rel="icon" href="img/icono.png" type="image/png">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+     <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="#iot">IoT</a></li>
+            <li><a href="#lorawan">LoRaWAN</a></li>
+            <li><a href="#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>Tecnología Innovadora para tu Vida</h1>
+            <p>Descubre los últimos avances tecnológicos que harán tu vida más fácil, eficiente y conectada.</p>
+        </div>
+    </section>
+
+
+    <section class="products animate-zoom" id="productos">
+        <div class="section-title">
+            <h2>Nuestros Productos</h2>
+        </div>
+
+        <div class="product-grid">
+            <!-- Producto 1 -->
+            <a href="medidores.html" class="product-card">
+                <div class="product-image">
+                    <img src="img/medidores.JPG" alt="Medidores inteligentes">
+                </div>
+                <div class="product-info">
+                    <h3>Medidores inteligentes</h3>
+                    <p>Conoce la gama de medidores con conexión inalámbrica.</p>
+                </div>
+            </a>
+ <!-- Producto 2 -->
+            <a href="modem.html" class="product-card">
+                <div class="product-image">
+                    <img src="img/modem.jpg" alt="Servidores IoT">
+                </div>
+                <div class="product-info">
+                    <h3>Módem IoT para medidores eléctricos</h3>
+                    <p>Actualizá tu parque de medidores ya instalados</p>
+                </div>
+            </a>
+            <!-- Producto 2 -->
+            <a href="equipos_medicos.html" class="product-card">
+                <div class="product-image">
+                    <img src="img/equipos_medicos.JPG" alt="Equipos médicos">
+                </div>
+                <div class="product-info">
+                    <h3>Equipos médicos</h3>
+                    <p>Somos distribuidores de equipos médicos de vanguardia.</p>
+                </div>
+            </a>
+            
+            <!-- Producto 4 -->
+            <a href="servidores.html" class="product-card">
+                <div class="product-image">
+                    <img src="img/servidores_iot.JPG" alt="Servidores IoT">
+                </div>
+                <div class="product-info">
+                    <h3>Servidores IoT</h3>
+                    <p>Podrás visualizar tus datos en tiempo real.</p>
+                </div>
+            </a>
+       
+
+          
+        </div>
+    </section>
+
+
+    <!-- Sección IoT -->
+    <section class="info-section animate-up" id="iot">
+        <div class="info-container">
+            <div class="info-text">
+                <h2>¿Qué es IoT?</h2>
+                <p>El Internet de las Cosas (IoT) se refiere a la interconexión de dispositivos físicos a través de
+                    internet, permitiendo la recolección y el intercambio de datos en tiempo real.</p>
+                <p>Nuestras soluciones IoT te permiten monitorear y controlar diversos aspectos de tu negocio o hogar de
+                    manera remota, mejorando la eficiencia y reduciendo costos.</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Monitoreo en tiempo real</li>
+                    <li><i class="fas fa-check-circle"></i> Automatización de procesos</li>
+                    <li><i class="fas fa-check-circle"></i> Alertas inteligentes</li>
+                    <li><i class="fas fa-check-circle"></i> Integración con múltiples plataformas</li>
+                </ul>
+            </div>
+
+            <div class="info-image">
+                <img src="img/iot.jpg" alt="Tecnología IoT">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección LoRaWAN -->
+    <section class="info-section dark-section animate-zoom" id="lorawan">
+        <div class="info-container">
+            <div class="info-image">
+                <img src="img/lorawan2.JPG" alt="Tecnología LoRaWAN">
+            </div>
+
+            <div class="info-text">
+                <h2>LoRaWAN Technology</h2>
+                <p>LoRaWAN es un protocolo de red para comunicaciones de largo alcance con bajo consumo de energía,
+                    ideal para aplicaciones de IoT donde se necesita conectividad a larga distancia.</p>
+                <p>Nuestras soluciones basadas en LoRaWAN ofrecen:</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Comunicación a larga distancia (hasta 15km)</li>
+                    <li><i class="fas fa-check-circle"></i> Bajo consumo de energía</li>
+                    <li><i class="fas fa-check-circle"></i> Bajo costo de implementación</li>
+                    <li><i class="fas fa-check-circle"></i> Seguridad de datos integrada</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Informativa -->
+    <section class="info-section animate-up" id="informacion">
+        <div class="info-container">
+            <div class="info-text">
+                <h2>Tecnología de Vanguardia</h2>
+                <p>En Diagnosis nos dedicamos a traerte los últimos avances tecnológicos con diseños innovadores y
+                    funcionales que se adaptan a tu estilo de vida.</p>
+                <p>Nuestros productos son seleccionados cuidadosamente para ofrecerte la mejor relación calidad-precio
+                    del mercado.</p>
+            </div>
+
+            <div class="info-image">
+                <img src="img/tecnologia.jpg" alt="Tecnología Innovadora">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección AMI -->
+    <section class="info-section dark-section animate-zoom" id="ami">
+        <div class="info-container">
+            <div class="info-image">
+                <img src="img/ami.JPG" alt="Tecnología ami">
+            </div>
+
+            <div class="info-text">
+                <h2>¿Que es tecnología AMI?</h2>
+                <p>AMI consiste en un sistema de medición de energía bi-direccional con la capacidad de lectura, corte y
+                    reconexión remota desde el sistema comercial de la CFE y tiene como objetivo principal evitar el
+                    robo de energía eléctrica. Es una tecnología habilitadora que permite incrementar la eficiencia en
+                    el proceso de medición de la empresa eléctrica, es decir, son todas las redes y sistemas que miden,
+                    recolectan y analizan el uso de la energía.</p>
+                </p>AMI proporciona información actualizada y detallada del consumo de energía de tu hogar o negocio,
+                identificando la hora y el lugar de mayor consumo. Además, facilita a la empresa eléctrica las
+                herramientas necesarias para medir la demanda de manera programada y el comportamiento de los
+                consumidores, así como para mejorar sus procesos, es decir, brinda información de los parámetros de la
+                energía.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sección servicios integrales -->
+    <section class="info-section animate-zoom animate-zoom" id="soluciones"
+        style="background-color: #4361ee; color: white; padding: 80px 20px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Servicios AMI Integrales</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px;">
+                Infraestructura de Medición Avanzada para redes inteligentes de electricidad, gas y agua.
+            </p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-bolt" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">AMI para Electricidad</h3>
+                        <p>Monitoreo en tiempo real de consumo eléctrico con comunicación bidireccional y detección de
+                            fraudes.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-fire" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">AMI para Gas</h3>
+                        <p>Sistemas de medición remota con detección de fugas y análisis de patrones de consumo.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-tint" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">AMI para Agua</h3>
+                        <p>Telemetría avanzada para gestión eficiente de recursos hídricos y detección de pérdidas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="soluciones.html" style="display: inline-block; margin-top: 50px;">
+                <div
+                    style="position: relative; max-width: 800px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
+                    <img src="img/ami.png" alt="Servicios AMI" style="width: 100%; display: block;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(67, 97, 238, 0.7); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <h3
+                                style="color: white; font-size: 2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.3); margin-bottom: 10px;">
+                                Conoce todos nuestros servicios AMI.
+                            </h3>
+                            <p style="color: white; text-decoration: underline; font-size: 1.2rem;">
+                                Haz click acá
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Certificaciones -->
+    <section class="certificaciones animate-up">
+        <div class="about-section">
+            <h2 class="section-title">Certificaciones</h2>
+            <p>
+                Nuestros equipos están <strong>certificados y testeados</strong> bajo las más estrictas normas de
+                calidad, garantizando <strong>seguridad, confiabilidad y cumplimiento normativo</strong> en todas las
+                etapas de desarrollo y producción.
+            </p>
+            <div class="certificaciones-grid">
+                <div class="certificacion animate-up">
+                    <img src="img/seguridad.png" alt="Seguridad Eléctrica">
+                    <p>Seguridad Eléctrica</p>
+                </div>
+                <div class="certificacion animate-up">
+                    <img src="img/anmat.png" alt="Certificación ANMAT">
+                    <p>Certificado por ANMAT</p>
+                </div>
+                <div class="certificacion animate-up">
+                    <img src="img/iram.png" alt="Normas IRAM">
+                    <p>Normas IRAM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- quienes somos -->
+    <section class="info-section dark-section animate-up" id="nosotros">
+        <div class="info-container">
+            <div class="info-image">
+                <img src="img/sobre_nosotros.jpg" alt="nosotros">
+            </div>
+
+            <div class="info-text">
+                <!-- TEXTO -->
+                <div style="flex: 1; min-width: 300px;">
+                    <section id="quienes-somos"></section>
+                    <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #333;">¿Quienes somos?</h2>
+                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                        <strong>DIAGNOSIS</strong> es una empresa innovadora dedicada a ofrecer soluciones
+                        tecnológicas inteligentes para hogares, industrias y profesionales. Nos especializamos en la
+                        venta de <strong>medidores inteligentes de agua, luz y gas</strong>, brindando una
+                        plataforma completa de <strong>servidores y dashboards</strong> para el monitoreo en tiempo
+                        real, disponible las 24 horas del día.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                        Además, contamos con una línea de <strong>equipos médicos de alta precisión</strong> y
+                        ofrecemos un <strong>servicio técnico especializado</strong>, garantizando soporte confiable
+                        y eficiente.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                        En el campo de la <strong>domótica</strong>, ofrecemos una variedad de dispositivos IoT como
+                        <strong>cerraduras electrónicas, sensores de humo, controladores de iluminación
+                            WiFi</strong>, entre otros, permitiendo a nuestros clientes disfrutar de entornos más
+                        seguros, automatizados y eficientes.
+                    </p>
+                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
+                        En <strong>DIAGNOSIS</strong>, trabajamos para que la tecnología esté siempre al servicio de
+                        las personas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+
+</body>
+</html>

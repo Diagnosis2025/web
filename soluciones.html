@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnosis</title>
+    <link rel="icon" href="img/icono.png" type="image/png" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnosis</title>
+
+<!-- Ícono en la pestaña del navegador (favicon) -->
+<link rel="icon" href="img/icono.png" type="image/png">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Tu CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<body>
+      <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+    <!-- Hero Section -->
+    <section class="solutions-hero">
+        <h1>Soluciones Integrales de Medición</h1>
+        <p>Sistemas de monitoreo inteligente para electricidad, gas y agua con tecnología de punta.</p>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px 40px;">
+        <!-- Solución 1: Medidores Eléctricos -->
+        <div class="solution-card animate-up">
+            <div class="solution-image">
+                <img src="img/redesLUZ.JPG" alt="Red de Medidores Eléctricos">
+            </div>
+            <div class="solution-content">
+                <h2>Red de Medidores Eléctricos Inteligentes</h2>
+                <p>Sistema de medición y monitoreo eléctrico en tiempo real mediante concentradores de datos.</p>
+
+                <div class="solution-steps">
+                    <h3>Configuración de la red:</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Instalación del concentrador</strong> - Colocar el dispositivo central en ubicación
+                            estratégica con cobertura WiFi/4G
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Emparejamiento de medidores</strong> - Cada medidor se vincula al concentrador
+                            mediante protocolo LoRaWAN
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Configuración de red</strong> - Establecer topología en malla para redundancia y
+                            mejor cobertura
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Integración con plataforma</strong> - Los datos se envían a la nube para
+                            visualización y análisis
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <span class="tech-badge"><i class="fas fa-wifi"></i> LoRaWAN</span>
+                    <span class="tech-badge"><i class="fas fa-cloud"></i> IoT Cloud</span>
+                    <span class="tech-badge"><i class="fas fa-project-diagram"></i> Topología Malla</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solución 2: Medidores de Gas -->
+        <div class="solution-card animate-zoom">
+            <div class="solution-image">
+                <img src="img/redesGAS.JPG" alt="Medición de Gas">
+            </div>
+            <div class="solution-content">
+                <h2>Sistema de Medición de Gas Integrado</h2>
+                <p>Monitoreo remoto de consumo de gas con sensores ultrasónicos de alta precisión.</p>
+
+                <div class="solution-steps">
+                    <h3>Implementación:</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Instalación de medidores</strong> - Dispositivos con sensor de flujo y comunicación
+                            inalámbrica
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Conexión a gateway</strong> - Enlace mediante protocolo Wireless M-Bus (868MHz)
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Configuración de intervalos</strong> - Programación de frecuencia de medición y
+                            envío de datos
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Detección de anomalías</strong> - Alertas automáticas por fugas o consumos inusuales
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <span class="tech-badge"><i class="fas fa-broadcast-tower"></i> Wireless M-Bus</span>
+                    <span class="tech-badge"><i class="fas fa-exclamation-triangle"></i> Detección de Fugas</span>
+                    <span class="tech-badge"><i class="fas fa-battery-full"></i> Baja Consumo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solución 3: Medidores de Agua -->
+        <div class="solution-card animate-up">
+            <div class="solution-image">
+                <img src="img/redesAGUA.JPG" alt="Medición de Agua">
+            </div>
+            <div class="solution-content">
+                <h2>Red de Medición de Agua Inteligente</h2>
+                <p>Sistema de telemetría para monitoreo de consumo y detección de pérdidas en redes hídricas.</p>
+
+                <div class="solution-steps">
+                    <h3>Implementación:</h3>
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <strong>Instalación de sensores</strong> - Medidores con tecnología de pulso magnético para
+                            máxima precisión
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <strong>Conexión a red</strong> - Comunicación mediante NB-IoT para amplia cobertura
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <strong>Calibración</strong> - Ajuste de sensores según diámetro de tubería y rango de flujo
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <strong>Monitoreo avanzado</strong> - Detección de patrones de consumo y posibles fugas
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <span class="tech-badge"><i class="fas fa-satellite-dish"></i> NB-IoT</span>
+                    <span class="tech-badge"><i class="fas fa-tint"></i> Detección de Fugas</span>
+                    <span class="tech-badge"><i class="fas fa-chart-line"></i> Análisis de Consumo</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Comparativa de Tecnologías -->
+    <section class="info-section animate-up" style="background-color: #f8f9fa; padding: 60px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 40px;">Tecnologías Utilizadas</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div
+                    style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: #4361ee; margin-bottom: 15px;"><i class="fas fa-project-diagram"></i>  LoRaWAN</h3>
+                    <p>Tecnología de red de área amplia de bajo consumo, ideal para medidores eléctricos con alcance de
+                        hasta 15km en áreas rurales.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Bajo consumo de energía</li>
+                        <li>Largo alcance</li>
+                        <li>Costo reducido</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: #4361ee; margin-bottom: 15px;"><i class="fas fa-broadcast-tower"></i>  Wireless
+                        M-Bus</h3>
+                    <p>Protocolo estándar europeo para telemetría de servicios públicos, perfecto para medición de gas
+                        con comunicación bidireccional.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Frecuencia 868MHz</li>
+                        <li>Seguridad integrada</li>
+                        <li>Interoperabilidad</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: #4361ee; margin-bottom: 15px;"><i class="fas fa-network-wired"></i>  NB-IoT</h3>
+                    <p>Tecnología celular de banda estrecha diseñada específicamente para dispositivos IoT como
+                        medidores de agua con cobertura extendida.</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Penetración en interiores</li>
+                        <li>Bajo consumo</li>
+                        <li>Cobertura extendida</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="info-section " id="soluciones"
+        style="background-color: #1de2e2; color: white; padding: 80px 20px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Conoce nuestros medidores inteligentes</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px;">
+                Infraestructura de Medición Avanzada para redes inteligentes de electricidad, gas y agua.
+            </p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-bolt" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">Medidores eléctricos</h3>
+                        <p>Monitoreo en tiempo real de consumo eléctrico con comunicación bidireccional y detección de
+                            fraudes.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-fire" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">Medidores de Gas</h3>
+                        <p>Sistemas de medición remota con detección de fugas y análisis de patrones de consumo.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
+                        <i class="fas fa-tint" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">Medidores de Agua</h3>
+                        <p>Telemetría avanzada para gestión eficiente de recursos hídricos y detección de pérdidas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </a>
+        </div>
+    </section>
+
+    <section class="solutions-hero2">
+        <h1>Conocé nuestra familia de medidores inteligentes</h1>
+        <p><a href="medidores.html" style="color: red;">Hacé click acá para ver más</a></p>
+    </section>
+
+
+    <div id="footer-placeholder"></div>       
+    <script src="script.js"></script>        
+
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechShop - Equipos Médicos</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .medical-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('img/medical.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+
+        .medical-banner h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .medical-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .medical-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #4361ee;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .equipment-filter {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #4361ee;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .medical-banner {
+                padding: 70px 20px;
+            }
+
+            .medical-banner h1 {
+                font-size: 2rem;
+            }
+        }
+
+       
+    </style>
+</head>
+<link rel="icon" href="img/icono.png" type="image/png">
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Tu CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<body>
+     <!-- AppBar Moderna -->
+       <header class="appbar">
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="img/logo2.png" alt="Logo Diagnosis"
+                style="height: 30px; vertical-align: middle; margin-right: 8px;">
+        </a>
+
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="dropdown">
+                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="medidores.html">Medidores inteligentes</a></li>
+                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
+                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
+                    <li><a href="servidores.html">Servidores IoT</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#iot">IoT</a></li>
+            <li><a href="index.html#lorawan">LoRaWAN</a></li>
+            <li><a href="index.html#soluciones">Soluciones</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+    <!-- Banner de Equipos Médicos -->
+    <section class="medical-banner animate-zoom">
+        <h1>Equipos Médicos Profesionales</h1>
+        <p>Soluciones tecnológicas de vanguardia para el sector salud, con la más alta calidad y precisión.</p>
+    </section>
+
+    <!-- Sección de Equipos -->
+    <section class="products" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="section-title">
+            <h2>Nuestros Equipos Médicos</h2>
+            <p style="text-align: center; margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Ofrecemos equipamiento médico de última generación con garantía y soporte técnico especializado.
+            </p>
+        </div>
+
+        <!-- Filtros (opcional) -->
+        <div class="equipment-filter">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="terapia">Terapia</button>
+            <button class="filter-btn" data-filter="diagnostico">Diagnóstico</button>
+            <button class="filter-btn" data-filter="monitoreo">Monitoreo</button>
+        </div>
+
+        <div class="product-grid">
+            <!-- Equipo 1: Bomba de Vacío VAC -->
+            <div class="product-card" data-category="terapia">
+                <div class="product-image">
+                    <img src="img/vac.JPG" alt="Bomba de Vacío VAC">
+                </div>
+                <div class="product-info">
+                    <h3>Bomba de Vacío VAC</h3>
+                    <p>Sistema avanzado de terapia de presión negativa para el manejo de heridas complejas.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Presión ajustable 50-200 mmHg</p>
+                        <p><i class="fas fa-check-circle"></i> Sistema portátil y silencioso</p>
+                        <p><i class="fas fa-check-circle"></i> Pantalla táctil intuitiva</p>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <!-- Equipo 2: Ecógrafos -->
+            <div class="product-card" data-category="diagnostico">
+                <div class="product-image">
+                    <img src="img/ecografo.JPG" alt="Ecógrafo Digital">
+                </div>
+                <div class="product-info">
+                    <h3>Ecógrafo Digital HD</h3>
+                    <p>Sistema de ultrasonido de alta definición con múltiples transductores.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Pantalla LED 15" Full HD</p>
+                        <p><i class="fas fa-check-circle"></i> 4 transductores incluidos</p>
+                        <p><i class="fas fa-check-circle"></i> Tecnología Doppler Color</p>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <!-- Equipo 3: Rayos X Dental -->
+            <div class="product-card" data-category="diagnostico">
+                <div class="product-image">
+                    <img src="img/dental.JPG" alt="Rayos X Dental">
+                </div>
+                <div class="product-info">
+                    <h3>Sistema de Rayos X Dental</h3>
+                    <p>Equipo digital de radiografía intraoral con baja emisión de radiación.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Resolución de imagen 16 lp/mm</p>
+                        <p><i class="fas fa-check-circle"></i> Tiempo de exposición reducido</p>
+                        <p><i class="fas fa-check-circle"></i> Software de diagnóstico incluido</p>
+                    </div>
+                   
+
+                </div>
+            </div>
+
+            <!-- Equipo 4: Monitor Multiparamétrico -->
+            <div class="product-card" data-category="monitoreo">
+                <div class="product-image">
+                    <img src="img/monitor.JPG" alt="Monitor Multiparamétrico">
+                </div>
+                <div class="product-info">
+                    <h3>Monitor Multiparamétrico</h3>
+                    <p>Sistema de monitoreo continuo de signos vitales para cuidados intensivos.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> ECG, SpO2, presión no invasiva</p>
+                        <p><i class="fas fa-check-circle"></i> Pantalla táctil de 12 pulgadas</p>
+                        <p><i class="fas fa-check-circle"></i> Almacenamiento de datos</p>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <!-- Equipo 5: Bombas de Infusión -->
+            <div class="product-card" data-category="terapia">
+                <div class="product-image">
+                    <img src="img/bomba.JPG" alt="Bomba de Infusión">
+                </div>
+                <div class="product-info">
+                    <h3>Bomba de Infusión Digital</h3>
+                    <p>Sistema de administración precisa de medicamentos y fluidos intravenosos.</p>
+                    <div class="product-features">
+                        <p><i class="fas fa-check-circle"></i> Rango de flujo 0.1-999 ml/h</p>
+                        <p><i class="fas fa-check-circle"></i> Alarmas de oclusión y aire</p>
+                        <p><i class="fas fa-check-circle"></i> Batería de larga duración</p>
+                    </div>
+                   
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="info-section animate-zoom" style="background-color: #f8f9fa; padding: 60px 20px;">
+        <div class="info-container">
+            <div class="info-text">
+                <h2>¿Por qué elegir nuestros equipos médicos?</h2>
+                <p>En TechShop Medical nos comprometemos con la excelencia en equipamiento médico, ofreciendo:</p>
+
+                <div class="medical-features">
+                    <div class="feature-card">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Certificaciones</h3>
+                        <p>Todos nuestros equipos cumplen con las normativas internacionales de calidad y seguridad.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Garantía</h3>
+                        <p>Garantías extendidas y soporte técnico especializado en todo el país.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Capacitación</h3>
+                        <p>Entrenamiento completo para el personal médico en el uso de los equipos.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>Mantenimiento</h3>
+                        <p>Servicio de mantenimiento preventivo y correctivo con repuestos originales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
