@@ -946,10 +946,22 @@ body {
 }
 
 .product-image img {
-    width: 800%;
-    height: 800%;
+    width: 50%;
+    height: 50%;
     object-fit: cover;
     transition: transform 0.5s ease;
+}
+
+.product-info h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.product-info p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.5rem;
 }
 
 }
