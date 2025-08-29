@@ -405,7 +405,100 @@
                 gap: 1rem;
             }
         }
-        
+        /* --- PLC Banner --- */
+.plc-section {
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.plc-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+.plc-wrap img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+.plc-badges {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: .75rem;
+}
+.plc-badge {
+  background: var(--accent-color);
+  color: #fff;
+  font-size: .8rem;
+  padding: .3rem .6rem;
+  border-radius: 999px;
+}
+@media (max-width: 900px) {
+  .plc-wrap { grid-template-columns: 1fr; }
+}
+/* --- Certificación --- */
+.cert-section {
+  background: #f5f7fa;
+  padding: 4rem 2rem;
+}
+.cert-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+}
+.cert-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+.cert-card h2 {
+  margin-bottom: .75rem;
+  color: var(--dark-color);
+}
+.cert-card p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+.cert-list {
+  margin: .5rem 0 1rem;
+  padding-left: 1rem;
+}
+.cert-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .5rem;
+}
+.cert-badge {
+  background: var(--accent-color);
+  color: #fff;
+  font-size: .8rem;
+  padding: .3rem .6rem;
+  border-radius: 999px;
+}
+.cert-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.cert-image img {
+  width: 100%;
+  display: block;
+}
+@media (max-width: 900px) {
+  .cert-container { grid-template-columns: 1fr; }
+}
+
     </style>
 </head>
 <link rel="icon" href="img/icono.png" type="image/png">
@@ -558,6 +651,88 @@
             <p>Conectá y visualizá todos tus dispositivos con un solo click.</p>
         </div>
     </section>
+  </section>
+    <!-- PLC: Power Line Communication -->
+<div class="plc-section">
+  <h2 class="table-title" style="text-align:center; margin-bottom: 1rem;">
+    Medidores con Comunicación PLC (Power Line Communication)
+  </h2>
+
+  <div class="plc-wrap">
+    <div>
+      <p>
+        La comunicación <strong>PLC</strong> aprovecha el cableado eléctrico existente para
+        transportar datos entre los medidores y un <strong>concentrador</strong> ubicado
+        habitualmente en el transformador. Esto reduce costos de instalación, mejora la
+        cobertura indoor y simplifica el despliegue de redes AMI.
+      </p>
+      <ul class="meter-features" style="margin-top:1rem;">
+        <li><i class="fas fa-check"></i> Topología punto-multipunto desde concentrador</li>
+        <li><i class="fas fa-check"></i> Protocolos: <strong>PRIME</strong>, <strong>G3-PLC</strong></li>
+        <li><i class="fas fa-check"></i> Compatibilidad con <strong>DLMS/COSEM</strong></li>
+        <li><i class="fas fa-check"></i> NB-PLC (banda CENELEC A ~3–95 kHz) para mayor robustez</li>
+        <li><i class="fas fa-check"></i> Cifrado y técnicas OFDM para tolerancia al ruido</li>
+      </ul>
+      <div class="plc-badges">
+        <span class="plc-badge">NB-PLC</span>
+        <span class="plc-badge">PRIME</span>
+        <span class="plc-badge">G3-PLC</span>
+        <span class="plc-badge">DLMS/COSEM</span>
+      </div>
+    </div>
+
+    <figure style="margin:0;">
+      <!-- Guardá una imagen en esta ruta o renómbrala a la que tengas -->
+      <img src="img/diagrama_plc.JPG"
+           alt="Medidores inteligentes con comunicación PLC sobre la red eléctrica">
+      <figcaption style="text-align:center; color:#666; margin-top:.5rem;">
+        PLC utiliza el mismo cableado eléctrico para transportar datos de medición.
+      </figcaption>
+    </figure>
+  </div>
+</div>
+  </section>
+
+
+  <!-- Certificación -->
+<section class="cert-section" id="certificacion">
+  <div class="cert-container">
+    <div class="cert-card">
+      <h2>Certificación</h2>
+      <p>
+        Todos nuestros medidores están certificados bajo <strong>normas internacionales y nacionales</strong>,
+        garantizando calidad, seguridad y cumplimiento normativo en cada etapa de diseño y fabricación.
+      </p>
+
+      <ul class="cert-list">
+        <li><strong>ISO 9001</strong> — Sistema de gestión de la calidad</li>
+        <li><strong>ISO 45001</strong> — Seguridad y salud en el trabajo</li>
+        <li><strong>ISO 14001</strong> — Gestión ambiental</li>
+        <li><strong>STS</strong> — Estándar de transferencia segura (prepago)</li>
+        <li><strong>DLMS/COSEM</strong> — Interoperabilidad para medición inteligente</li>
+        <li><strong>Ensayos por terceros independientes</strong> (Third-Party Test)</li>
+      </ul>
+
+      <div class="cert-badges">
+        <span class="cert-badge">ISO 9001</span>
+        <span class="cert-badge">ISO 45001</span>
+        <span class="cert-badge">ISO 14001</span>
+        <span class="cert-badge">STS</span>
+        <span class="cert-badge">DLMS/COSEM</span>
+        <span class="cert-badge">Third-Party Tested</span>
+      </div>
+    </div>
+
+    <figure style="margin:0;">
+      <!-- Guardá una imagen en esta ruta o renómbrala a la que tengas -->
+      <img src="img/certicados.JPG"
+           alt="Certificados: ISO 9001, ISO 45001, ISO 14001, STS, DLMS y ensayos de terceros">
+      <figcaption style="text-align:center; color:#666; margin-top:.5rem;">
+        En Argentina certificamos con Seguridad Eléctrica e ICQ.
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>    
