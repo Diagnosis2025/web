@@ -1,347 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnosis</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diagnosis Track — Web</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    /* Estilos para el menú desplegable */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-    <!-- Descripción general para buscadores -->
-    <meta name="description" content="Soluciones IoT y médicas con diagnóstico inteligente. Conectividad, análisis y monitoreo en tiempo real.">
+    .dropdown-content {
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      overflow: hidden;
+      top: 100%;
+      left: 0;
+    }
 
-    <!-- Open Graph: para Facebook, WhatsApp, LinkedIn -->
-    <meta property="og:title" content="Diagnosis - Soluciones IoT y médicas" />
-    <meta property="og:description" content="Conectividad, monitoreo y análisis inteligente de datos para medidores, equipos médicos y servidores IoT." />
-    <meta property="og:image" content="https://argentinadiagnosis.com/img/logo2.png" />
-    <meta property="og:url" content="https://argentinadiagnosis.com/" />
-    <meta property="og:type" content="website" />
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
 
-    <!-- Ícono en la pestaña del navegador (favicon) -->
-    <link rel="icon" href="img/icono.png" type="image/png">
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    /* Estilos modernos para el login */
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      background-image: url('./assets/images/ciudad_inteligente.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
 
-    <!-- Tu CSS -->
-    <link rel="stylesheet" href="styles.css">
+    .auth-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .auth-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      transition: transform 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .auth-card h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #2d3748;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .auth-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+
+    .auth-btn:active {
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Estilo para el ícono en la App Bar */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ===== NUEVOS ESTILOS PARA EL FOOTER ===== */
+    .login-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 3; /* Por encima del overlay pero debajo del formulario */
+    }
+
+    .login-footer a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .login-footer.hidden {
+      display: none;
+    }
+  </style>
 </head>
-
-
 <body>
-     <!-- AppBar Moderna -->
-       <header class="appbar">
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <img src="img/logo2.png" alt="Logo Diagnosis"
-                style="height: 30px; vertical-align: middle; margin-right: 8px;">
-        </a>
+  <header class="topbar hidden">
+    <div class="brand">
+      <img src="./assets/images/ic_launcher.png" alt="Icono" class="brand-icon" />
+      <span>Diagnosis Track</span>
+    </div>
+    <div class="toolbar">
+      <!-- Botón de menú con dropdown -->
+      <div class="dropdown">
+        <button id="btnMenu" class="btn">Menú</button>
+        <div id="menuContent" class="dropdown-content hidden">
+          <a href="#" id="menuLoadCSV">Cargar rutas desde archivo .csv</a>
+          <a href="#" id="menuEdit" class="hidden">Editar atributos</a>
+          <a href="#" id="menuExit">Salir</a>
+        </div>
+      </div>
+      
+      <button id="btnRefresh" class="btn">Actualizar</button>
+      <button id="btnSearch" class="btn">Buscar</button>
+      <button id="btnFleet" class="btn">Mi flota</button>
+      <button id="btnLocate" class="btn">Mi ubicación</button>
+      <span class="units">N° de unidades: <strong id="unitsCount">0</strong></span>
+    </div>
+  </header>
 
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+  <!-- AUTH PANE -->
+  <main id="authPane" class="pane">
+    <div class="auth-container">
+      <section class="auth-card">
+        <h1>Ingreso al Sistema</h1>
+        <div>
+          <input id="username" type="text" class="auth-input" placeholder="Usuario" />
+          <input id="password" type="password" class="auth-input" placeholder="Contraseña" />
+        </div>
+        <div>
+          <button id="btnLogin" class="auth-btn">Iniciar Sesión</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- MAP PANE -->
+  <main id="mapPane" class="pane hidden">
+    <div id="map"></div>
+
+    <!-- SEARCH PANEL (derecha) -->
+    <aside id="searchPanel" class="right-drawer hidden">
+      <header>
+        <h3>Buscar dispositivo</h3>
+        <button id="btnCloseSearch" class="btn btn-sm">×</button>
+      </header>
+      <div class="content">
+        <input id="searchId" type="text" placeholder="ID exacto..." />
+        <button id="btnDoSearch" class="btn btn-primary btn-sm">Buscar</button>
+        <div id="searchMsg" class="muted mt-s"></div>
+      </div>
+    </aside>
+
+    <!-- FLEET PANEL (derecha) -->
+    <aside id="fleetPanel" class="right-drawer hidden">
+      <header>
+        <h3>Mi flota</h3>
+        <button id="btnCloseFleet" class="btn btn-sm">×</button>
+      </header>
+      <div class="content">
+        <ul id="fleetList"></ul>
+      </div>
+    </aside>
+
+    <!-- DETAILS PANEL (derecha) -->
+    <aside id="detailsPanel" class="details-panel hidden">
+      <header class="details-header">
+        <div>
+          <div class="muted">Dispositivo</div>
+          <div id="dpDevice" class="big"></div>
+        </div>
+        <button id="btnCloseDetails" class="btn btn-sm">×</button>
+      </header>
+<div class="details-body">
+
+  <div class="kv"><span class="k"><span class="ico">🚘</span>Patente</span><span class="v" id="dpPlate">-</span></div>
+<div class="kv"><span class="k"><span class="ico">🏷️</span>Marca</span><span class="v" id="dpBrand">-</span></div>
+<div class="kv"><span class="k"><span class="ico">📦</span>Modelo</span><span class="v" id="dpModel">-</span></div>
+<div class="kv"><span class="k"><span class="ico">🎨</span>Color</span><span class="v" id="dpColor">-</span></div>
+  <div class="section-title">Últimos valores registrados</div>
+  <div class="kv"><span class="k"><span class="ico">📅</span>Fecha</span><span class="v" id="dpDate">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">⏰</span>Hora</span><span class="v" id="dpTime">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">🎯</span>Evento</span><span class="v" id="dpEvent">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">🚗</span>Velocidad</span><span class="v" id="dpSpeed">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">📶</span>Señal</span><span class="v" id="dpSignal">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">🔋</span>Batería</span><span class="v" id="dpBattery">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">📍</span>Lat/Lon</span><span class="v" id="dpLatLon">-</span></div>
+  <div class="kv"><span class="k"><span class="ico">🏠</span>Dirección</span><span class="v" id="dpAddress">-</span></div>
+
+</div>
+
+
+      <div class="details-actions">
+        <div class="group">
+          <div class="group-title">Ver hoy</div>
+          <div class="chips">
+            <button class="chip" data-min="30">30 min</button>
+            <button class="chip" data-min="45">45 min</button>
+            <button class="chip" data-min="60">1 h</button>
+            <button class="chip" data-min="120">2 hs</button>
+            <button class="chip" data-min="360">6 hs</button>
+            <button class="chip" data-min="720">12 hs</button>
+          </div>
         </div>
 
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li class="dropdown">
-                <a href="#productos">Productos <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="medidores.html">Medidores inteligentes</a></li>
-                    <li><a href="modem.html">Módem para medidores eléctricos</a></li>
-                    <li><a href="equipos_medicos.html">Equipos médicos</a></li>          
-                    <li><a href="servidores.html">Servidores IoT</a></li>
-                </ul>
-            </li>
-            <li><a href="#iot">IoT</a></li>
-            <li><a href="#lorawan">LoRaWAN</a></li>
-            <li><a href="#soluciones">Soluciones</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
-</header>
-    
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-content">
-            <h1>Tecnología Innovadora para tu Vida</h1>
-            <p>Descubre los últimos avances tecnológicos que harán tu vida más fácil, eficiente y conectada.</p>
+        <div class="group">
+          <div class="group-title">Ver días anteriores</div>
+          <div class="grid2">
+            <label>Desde<br/><input id="dtFrom" type="datetime-local" /></label>
+            <label>Hasta<br/><input id="dtTo" type="datetime-local" /></label>
+          </div>
+          <button id="btnApplyRange" class="btn btn-primary btn-sm">Buscar</button>
+          <button id="btnDownload" class="btn btn-secondary btn-sm" disabled>Descargar ruta (CSV)</button>
         </div>
-    </section>
+      </div>
+    </aside>
 
 
-    <section class="products animate-zoom" id="productos">
-        <div class="section-title">
-            <h2>Nuestros Productos</h2>
-        </div>
+<!-- EDIT PANEL (derecha) -->
+<aside id="editPanel" class="right-drawer hidden">
+  <header>
+    <h3>Editar vehículo</h3>
+    <button id="btnCloseEdit" class="btn btn-sm">×</button>
+  </header>
+  <div class="content">
+    <label>Dispositivo
+      <select id="editDeviceSelect"></select>
+    </label>
 
-        <div class="product-grid">
-            <!-- Producto 1 -->
-            <a href="medidores.html" class="product-card">
-                <div class="product-image">
-                    <img src="img/medidores.JPG" alt="Medidores inteligentes">
-                </div>
-                <div class="product-info">
-                    <h3>Medidores inteligentes</h3>
-                    <p>Conoce la gama de medidores con conexión inalámbrica.</p>
-                </div>
-            </a>
- <!-- Producto 2 -->
-            <a href="modem.html" class="product-card">
-                <div class="product-image">
-                    <img src="img/modem.jpg" alt="Servidores IoT">
-                </div>
-                <div class="product-info">
-                    <h3>Módem IoT para medidores eléctricos</h3>
-                    <p>Actualizá tu parque de medidores ya instalados</p>
-                </div>
-            </a>
-            <!-- Producto 2 -->
-            <a href="equipos_medicos.html" class="product-card">
-                <div class="product-image">
-                    <img src="img/equipos_medicos.JPG" alt="Equipos médicos">
-                </div>
-                <div class="product-info">
-                    <h3>Equipos médicos</h3>
-                    <p>Somos distribuidores de equipos médicos de vanguardia.</p>
-                </div>
-            </a>
-            
-            <!-- Producto 4 -->
-            <a href="servidores.html" class="product-card">
-                <div class="product-image">
-                    <img src="img/servidores_iot.JPG" alt="Servidores IoT">
-                </div>
-                <div class="product-info">
-                    <h3>Servidores IoT</h3>
-                    <p>Podrás visualizar tus datos en tiempo real.</p>
-                </div>
-            </a>
+    <div class="grid2" style="margin-top:8px">
+      <label>Nombre<br/><input id="editName" type="text" placeholder="Camión 1" /></label>
+      <label>Patente<br/><input id="editPlate" type="text" placeholder="AB123CD" /></label>
+    </div>
 
-          
-        </div>
-    </section>
+    <div class="grid2" style="margin-top:8px">
+      <label>Marca<br/><input id="editBrand" type="text" placeholder="Mercedes-Benz" /></label>
+      <label>Modelo<br/><input id="editModel" type="text" placeholder="Actros 2540" /></label>
+    </div>
+
+    <div class="grid2" style="margin-top:8px">
+      <label>Color<br/><input id="editColor" type="text" placeholder="Blanco" /></label>
+      <label>Color HEX<br/><input id="editColorHex" type="color" /></label>
+    </div>
+
+    <div style="margin-top:12px">
+      <button id="btnSaveMeta" class="btn btn-primary btn-sm">Guardar</button>
+      <button id="btnCancelMeta" class="btn btn-secondary btn-sm">Cancelar</button>
+    </div>
+    <div id="editMsg" class="muted mt-s"></div>
+  </div>
+</aside>
 
 
-    <!-- Sección IoT -->
-    <section class="info-section animate-up" id="iot">
-        <div class="info-container">
-            <div class="info-text">
-                <h2>¿Qué es IoT?</h2>
-                <p>El Internet de las Cosas (IoT) se refiere a la interconexión de dispositivos físicos a través de
-                    internet, permitiendo la recolección y el intercambio de datos en tiempo real.</p>
-                <p>Nuestras soluciones IoT te permiten monitorear y controlar diversos aspectos de tu negocio o hogar de
-                    manera remota, mejorando la eficiencia y reduciendo costos.</p>
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Monitoreo en tiempo real</li>
-                    <li><i class="fas fa-check-circle"></i> Automatización de procesos</li>
-                    <li><i class="fas fa-check-circle"></i> Alertas inteligentes</li>
-                    <li><i class="fas fa-check-circle"></i> Integración con múltiples plataformas</li>
-                </ul>
-            </div>
 
-            <div class="info-image">
-                <img src="img/iot.jpg" alt="Tecnología IoT">
-            </div>
-        </div>
-    </section>
+  </main>
 
+  <!-- FOOTER solo para login -->
+  <footer id="loginFooter" class="login-footer">
+    Diagnosis S.A. - Contacto: <a href="mailto:argentinadiagnosis@gmail.com">argentinadiagnosis@gmail.com</a>
+  </footer>
 
-    <!-- Sección LoRaWAN -->
-    <section class="info-section dark-section animate-zoom" id="lorawan">
-        <div class="info-container">
-            <div class="info-image">
-                <img src="img/lorawan2.JPG" alt="Tecnología LoRaWAN">
-            </div>
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
 
-            <div class="info-text">
-                <h2>LoRaWAN Technology</h2>
-                <p>LoRaWAN es un protocolo de red para comunicaciones de largo alcance con bajo consumo de energía,
-                    ideal para aplicaciones de IoT donde se necesita conectividad a larga distancia.</p>
-                <p>Nuestras soluciones basadas en LoRaWAN ofrecen:</p>
-                <ul class="features-list">
-                    <li><i class="fas fa-check-circle"></i> Comunicación a larga distancia (hasta 15km)</li>
-                    <li><i class="fas fa-check-circle"></i> Bajo consumo de energía</li>
-                    <li><i class="fas fa-check-circle"></i> Bajo costo de implementación</li>
-                    <li><i class="fas fa-check-circle"></i> Seguridad de datos integrada</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+  <!-- LIB & APP -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="./utils.js"></script>
+  <script type="module" src="./api.js"></script>
+  <script type="module" src="./app.js"></script>
+  <script type="module" src="./editor.js"></script>
+  <script type="module" src="./load-csv.js"></script>
 
-    <!-- Sección Informativa -->
-    <section class="info-section animate-up" id="informacion">
-        <div class="info-container">
-            <div class="info-text">
-                <h2>Tecnología de Vanguardia</h2>
-                <p>En Diagnosis nos dedicamos a traerte los últimos avances tecnológicos con diseños innovadores y
-                    funcionales que se adaptan a tu estilo de vida.</p>
-                <p>Nuestros productos son seleccionados cuidadosamente para ofrecerte la mejor relación calidad-precio
-                    del mercado.</p>
-            </div>
+  <!-- LEFT STATUS SIDEBAR (FIJA / OCULTA EN LOGIN) -->
+  <aside id="statusPanel" class="left-sidebar hidden">
+    <button id="btnStatusToggle" class="collapse-handle" title="Minimizar/Expandir">❮</button>
 
-            <div class="info-image">
-                <img src="img/tecnologia.jpg" alt="Tecnología Innovadora">
-            </div>
-        </div>
-    </section>
+    <div class="sp-header">
+      <div class="sp-title">Usuario</div>
+      <div class="sp-user" id="spUser">-</div>
+    </div>
 
+    <div class="sp-body">
+      <div class="sp-section-title">Mi flota</div>
+      <div class="sp-row" id="spTotalRow">
+        <span class="sp-icon">🚘</span>
+        <span class="sp-label">Cantidad total</span>
+        <span class="sp-value" id="spTotal">0</span>
+      </div>
 
-    <!-- Sección AMI -->
-    <section class="info-section dark-section animate-zoom" id="ami">
-        <div class="info-container">
-            <div class="info-image">
-                <img src="img/ami.JPG" alt="Tecnología ami">
-            </div>
+      <div class="sp-row clickable" id="spTransitRow" title="Mostrar vehículos en tránsito">
+        <span class="sp-icon">🟢</span>
+        <span class="sp-label">En tránsito</span>
+        <span class="sp-value" id="spTransit">0</span>
+      </div>
 
-            <div class="info-text">
-                <h2>¿Que es tecnología AMI?</h2>
-                <p>AMI consiste en un sistema de medición de energía bi-direccional con la capacidad de lectura, corte y
-                    reconexión remota desde el sistema comercial de la CFE y tiene como objetivo principal evitar el
-                    robo de energía eléctrica. Es una tecnología habilitadora que permite incrementar la eficiencia en
-                    el proceso de medición de la empresa eléctrica, es decir, son todas las redes y sistemas que miden,
-                    recolectan y analizan el uso de la energía.</p>
-                </p>AMI proporciona información actualizada y detallada del consumo de energía de tu hogar o negocio,
-                identificando la hora y el lugar de mayor consumo. Además, facilita a la empresa eléctrica las
-                herramientas necesarias para medir la demanda de manera programada y el comportamiento de los
-                consumidores, así como para mejorar sus procesos, es decir, brinda información de los parámetros de la
-                energía.</p>
-            </div>
-        </div>
-    </section>
+      <div class="sp-row clickable" id="spDetenidoRow" title="Mostrar vehículos detenidos/apagados">
+        <span class="sp-icon">🔴</span>
+        <span class="sp-label">Detenidos/Apagados</span>
+        <span class="sp-value" id="spDetenido">0</span>
+      </div>
 
-
-    <!-- Sección servicios integrales -->
-    <section class="info-section animate-zoom animate-zoom" id="soluciones"
-        style="background-color: #4361ee; color: white; padding: 80px 20px; text-align: center;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Servicios AMI Integrales</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px;">
-                Infraestructura de Medición Avanzada para redes inteligentes de electricidad, gas y agua.
-            </p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
-                <div>
-                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
-                        <i class="fas fa-bolt" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
-                        <h3 style="margin-bottom: 15px;">AMI para Electricidad</h3>
-                        <p>Monitoreo en tiempo real de consumo eléctrico con comunicación bidireccional y detección de
-                            fraudes.</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
-                        <i class="fas fa-fire" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
-                        <h3 style="margin-bottom: 15px;">AMI para Gas</h3>
-                        <p>Sistemas de medición remota con detección de fugas y análisis de patrones de consumo.</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div style="background: white; color: #1a1a2e; padding: 30px; border-radius: 10px; height: 100%;">
-                        <i class="fas fa-tint" style="font-size: 2.5rem; color: #4361ee; margin-bottom: 20px;"></i>
-                        <h3 style="margin-bottom: 15px;">AMI para Agua</h3>
-                        <p>Telemetría avanzada para gestión eficiente de recursos hídricos y detección de pérdidas.</p>
-                    </div>
-                </div>
-            </div>
-
-            <a href="soluciones.html" style="display: inline-block; margin-top: 50px;">
-                <div
-                    style="position: relative; max-width: 800px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s ease;">
-                    <img src="img/ami.png" alt="Servicios AMI" style="width: 100%; display: block;">
-                    <div
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(67, 97, 238, 0.7); display: flex; align-items: center; justify-content: center;">
-                        <div style="text-align: center;">
-                            <h3
-                                style="color: white; font-size: 2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.3); margin-bottom: 10px;">
-                                Conoce todos nuestros servicios AMI.
-                            </h3>
-                            <p style="color: white; text-decoration: underline; font-size: 1.2rem;">
-                                Haz click acá
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Certificaciones -->
-    <section class="certificaciones animate-up">
-        <div class="about-section">
-            <h2 class="section-title">Certificaciones</h2>
-            <p>
-                Nuestros equipos están <strong>certificados y testeados</strong> bajo las más estrictas normas de
-                calidad, garantizando <strong>seguridad, confiabilidad y cumplimiento normativo</strong> en todas las
-                etapas de desarrollo y producción.
-            </p>
-            <div class="certificaciones-grid">
-                <div class="certificacion animate-up">
-                    <img src="img/seguridad.png" alt="Seguridad Eléctrica">
-                    <p>Seguridad Eléctrica</p>
-                </div>
-                <div class="certificacion animate-up">
-                    <img src="img/anmat.png" alt="Certificación ANMAT">
-                    <p>Certificado por ANMAT</p>
-                </div>
-                <div class="certificacion animate-up">
-                    <img src="img/iram.png" alt="Normas IRAM">
-                    <p>Normas IRAM</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- quienes somos -->
-    <section class="info-section dark-section animate-up" id="nosotros">
-        <div class="info-container">
-            <div class="info-image">
-                <img src="img/sobre_nosotros.jpg" alt="nosotros">
-            </div>
-
-            <div class="info-text">
-                <!-- TEXTO -->
-                <div style="flex: 1; min-width: 300px;">
-                    <section id="quienes-somos"></section>
-                    <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #333;">¿Quienes somos?</h2>
-                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
-                        <strong>DIAGNOSIS</strong> es una empresa innovadora dedicada a ofrecer soluciones
-                        tecnológicas inteligentes para hogares, industrias y profesionales. Nos especializamos en la
-                        venta de <strong>medidores inteligentes de agua, luz y gas</strong>, brindando una
-                        plataforma completa de <strong>servidores y dashboards</strong> para el monitoreo en tiempo
-                        real, disponible las 24 horas del día.
-                    </p>
-                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
-                        Además, contamos con una línea de <strong>equipos médicos de alta precisión</strong> y
-                        ofrecemos un <strong>servicio técnico especializado</strong>, garantizando soporte confiable
-                        y eficiente.
-                    </p>
-                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
-                        En el campo de la <strong>domótica</strong>, ofrecemos una variedad de dispositivos IoT como
-                        <strong>cerraduras electrónicas, sensores de humo, controladores de iluminación
-                            WiFi</strong>, entre otros, permitiendo a nuestros clientes disfrutar de entornos más
-                        seguros, automatizados y eficientes.
-                    </p>
-                    <p style="font-size: 1.1rem; color: #555; line-height: 1.6;">
-                        En <strong>DIAGNOSIS</strong>, trabajamos para que la tecnología esté siempre al servicio de
-                        las personas.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <div id="footer-placeholder"></div>
-    <script src="script.js"></script>
-
+      <div class="sp-row clickable" id="spSinRepRow" title="Mostrar vehículos sin reportar (≥5h)">
+        <span class="sp-icon">⚪</span>
+        <span class="sp-label">Sin reportar (≥5h)</span>
+        <span class="sp-value" id="spSinRep">0</span>
+      </div>
+    </div>
+  </aside>
 </body>
 </html>
