@@ -261,6 +261,7 @@ function ensureMarker(deviceId, lat, lon, ev) {
 }
 
 
+
 // =================== marker click / detalles ===================
 async function onMarkerClick(deviceId) {
   currentDevice = deviceId;

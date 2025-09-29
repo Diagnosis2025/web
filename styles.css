@@ -285,12 +285,11 @@ body.sidebar-collapsed #mapPane{
 .menu-wrapper { position: relative; display: inline-block; }
 .dropdown.hidden { display: none; }
 .dropdown {
-  position: absolute;
+  position: center;
   top: 100%;
   left: 0;
-  min-width: 240px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  min-width: 140px;
+
   border-radius: 8px;
   box-shadow: 0 10px 24px rgba(0,0,0,.12);
   padding: 6px;
@@ -303,6 +302,20 @@ body.sidebar-collapsed #mapPane{
   margin: 4px 0;
 }
 .btn-ghost { background: transparent; }
+
+/* caret en el botón */
+#btnMenu::after {
+  content: "▾";       /* también podés usar "▼" o "⌄" */
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+/* cuando el dropdown está abierto, giramos el caret */
+.dropdown.open #btnMenu::after {
+  transform: rotate(180deg);
+}
+
 
 /* Si ya tenías estilos para .details-panel, podés dejarlos;
    esto asegura que Buscar/Mi flota usen el mismo layout a la derecha */
