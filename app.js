@@ -214,7 +214,7 @@ function fmtBattery(v) {
 }
 
 function ensureMarker(deviceId, lat, lon, ev) {
-  let iconUrl = (ev === 'stale') ? 'assets/car-gray.svg' : carIconByEvent(ev);
+  let iconUrl = (ev === 'stale') ? 'assets/car_gray_warning_triangle.svg' : carIconByEvent(ev);
 
   const icon = L.icon({
     iconUrl,
@@ -669,6 +669,29 @@ if (btnMenu && menuContent) {
 // Configurar opciones del menú
 document.getElementById('menuExit').addEventListener('click', onLogout);
 
+// ===== Referencias (dropdown a la izquierda) =====
+const btnRefs = document.getElementById('btnRefs');
+const refsContent = document.getElementById('refsContent');
+
+if (btnRefs && refsContent) {
+  btnRefs.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = refsContent.classList.toggle('hidden');
+    btnRefs.setAttribute('aria-expanded', String(!open));
+  });
+
+  // Evitar que el clic dentro cierre el menú
+  refsContent.addEventListener('click', (e) => e.stopPropagation());
+
+  // Cerrar referencias si se hace clic afuera
+  document.addEventListener('click', () => {
+    refsContent.classList.add('hidden');
+    btnRefs.setAttribute('aria-expanded', 'false');
+  });
+}
+
+
+
 async function onLogin() {
   const username = el('username').value.trim();
   const password = el('password').value.trim();
@@ -910,6 +933,11 @@ async function onDownloadCsv() {
 
 // =================== wire-up ===================
 el('btnLogin').addEventListener('click', onLogin);
+
+document.getElementById('loginForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  onLogin();
+});
 el('btnRefresh').addEventListener('click', onRefresh);
 el('btnSearch').addEventListener('click', showSearch);
 el('btnDoSearch').addEventListener('click', () => {
